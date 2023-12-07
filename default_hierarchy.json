@@ -1,0 +1,10 @@
+{
+  "default_hierarchy": {
+    "beta": 0,
+    "prerelease": 1,
+    "alpha": 2,
+    "unstable": 3,
+    "stable": 4,
+    "release": 5
+  }
+}
