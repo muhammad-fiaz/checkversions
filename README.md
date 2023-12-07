@@ -20,7 +20,6 @@
 </div>
 
 
-
 CheckVersions is a powerful and intuitive version comparison tool designed to simplify the process of discerning the latest and older versions in software development.
 
 ## Features
