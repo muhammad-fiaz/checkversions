@@ -1,4 +1,25 @@
+<div align="center">
+
 # CheckVersions
+
+[![Run Tests](https://github.com/muhammad-fiaz/checkversions/actions/workflows/python-package.yml/badge.svg)](https://github.com/muhammad-fiaz/checkversions/actions/workflows/python-package.yml)
+[![PyPI Version](https://img.shields.io/pypi/v/checkversions)](https://pypi.org/project/checkversions/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/checkversions)](https://pypi.org/project/checkversions/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://img.shields.io/pypi/dm/checkversions)](https://pypi.org/project/checkversions/)
+[![Last Commit](https://img.shields.io/github/last-commit/muhammad-fiaz/checkversions)](https://github.com/muhammad-fiaz/checkversions)
+[![GitHub Issues](https://img.shields.io/github/issues/muhammad-fiaz/checkversions)](https://github.com/muhammad-fiaz/checkversions/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/muhammad-fiaz/checkversions)](https://github.com/muhammad-fiaz/checkversions/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/muhammad-fiaz/checkversions)](https://github.com/muhammad-fiaz/checkversions/network)
+
+[![Maintainer](https://img.shields.io/badge/Maintainer-muhammad--fiaz-blue)](https://github.com/muhammad-fiaz)
+[![Sponsor on GitHub](https://img.shields.io/badge/Sponsor%20on%20GitHub-Become%20a%20Sponsor-blue)](https://github.com/sponsors/muhammad-fiaz)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Stability](https://img.shields.io/badge/Stability-Stable-green)](https://github.com/muhammad-fiaz/checkversions)
+
+</div>
+
+
 
 CheckVersions is a powerful and intuitive version comparison tool designed to simplify the process of discerning the latest and older versions in software development.
 
@@ -12,11 +33,66 @@ CheckVersions is a powerful and intuitive version comparison tool designed to si
 
 ## Getting Started
 
-### Installation
+## Installation
 
 ```bash
 npm install checkversions
 ```
+## Usage
+```python3
+from checkversions import *
+
+# Example 1: Basic Version Comparison
+current_version = "v1.0.0"
+latest_version = "v1.0.0-beta"
+result = compare_versions(current_version, latest_version)
+print(result)
+# Output: v1.0.0
+```
+In this example, we demonstrate a basic version comparison. The compare_versions function is used to compare the current_version (v1.0.0) with the latest_version (v1.0.0-beta). The result is printed, and it shows that the latest version is v1.0.0.
+
+```python3
+# Example 2: Comparing Versions with Hyphens and Words
+version1 = "2.0.0-beta"
+version2 = "2.0.1-alpha"
+result = compare_versions(version1, version2)
+print(result)
+# Output: 2.0.1-alpha
+
+```
+In this example, we showcase version comparison with hyphens and additional words. The compare_versions function compares version1 (2.0.0-beta) with version2 (2.0.1-alpha). The result is printed, indicating that the latest version is 2.0.1-alpha.
+
+## Default Hierarchy
+```json
+{
+  "beta": 0,
+  "prerelease": 1,
+  "alpha": 2,
+  "unstable": 3,
+  "stable": 4,
+  "release": 5
+}
+
+```
+The default hierarchy is a JSON representation that assigns priority values to version words. For instance, "beta" has a priority of 0, "prerelease" has a priority of 1, and so on.
+
+## Custom Hierarchy
+
+```python3
+from checkversions import *
+
+# Example 3: Custom Hierarchy
+# Define a custom hierarchy
+custom_hierarchy = {"beta": 0, "alpha": 1, "rc": 2, "gamma": 3, "stable": 4}
+
+version1 = "v1.0.0-beta"
+version2 = "v1.0.1-alpha"
+result = compare_versions(version1, version2, custom_hierarchy)
+print(result)
+# Output: v1.0.1-alpha
+
+```
+In this example, we introduce a custom hierarchy for version comparison. The custom_hierarchy dictionary is defined with version words and their corresponding priority. The compare_versions function uses this custom hierarchy to compare version1 (v1.0.0-beta) with version2 (v1.0.1-alpha). The result is printed, indicating that the latest version is v1.0.1-alpha.
 
 ## Contributing
 Contributions are welcome! Before contributing, please read our [Contributing Guidelines](CONTRIBUTING.md) to ensure a smooth and collaborative development process.
