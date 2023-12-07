@@ -25,11 +25,19 @@ CheckVersions is a powerful and intuitive version comparison tool designed to si
 
 ## Features
 
-- **Semantic Version Analysis:** Leverage our sophisticated semantic versioning analysis engine to compare versions like "0.0.0-beta" effortlessly.
-- **Automated Version Ranking:** Quickly identify the latest, older releases, or pre-releases with our automated version-ranking system.
-- **Efficient Version Delta Assessment:** CheckVersions provides a detailed breakdown of the differences between versions, allowing you to make informed decisions about your software.
-- **User-Friendly Interface:** Our intuitive user interface ensures that developers can effortlessly compare versions through graphical representations, providing detailed insights into the chronological order of your software iterations.
-- **Secure Version Analysis:** Security is paramount. CheckVersions ensures version comparison is performed securely, protecting your intellectual property and facilitating risk-free decision-making in your development process.
+- **Semantic Version Analysis:** 🧐 Leverage our sophisticated semantic versioning analysis engine to compare versions like "0.0.0-beta" effortlessly.
+
+- **Automated Version Ranking:** 🚀 CheckVersions automatically ranks versions based on their priority, allowing you to quickly identify the latest version.
+
+- **Efficient Version Delta Assessment:** 📊 CheckVersions provides a simple and efficient way to assess the difference between two versions.
+
+- **User-Friendly Interface:** 🎨 Our intuitive user interface ensures that developers can effortlessly compare versions.
+
+- **Secure Version Analysis:** 🔒 Security is paramount. CheckVersions ensures version comparison is performed securely, protecting your intellectual property and facilitating risk-free decision-making in your development process.
+
+- **Custom Hierarchy** 📝 Customize the hierarchy of version words to suit your needs. For instance, you can assign a higher priority to "beta" than "alpha" if you wish.
+
+- **Older Version Retrieval:** ⏳ Optionally retrieve the older version when comparing two versions by setting the `older_version` parameter to `True`.
 
 ## Getting Started
 
@@ -52,6 +60,8 @@ print(result)
 In this example, we demonstrate a basic version comparison. The compare_versions function is used to compare the current_version (v1.0.0) with the latest_version (v1.0.0-beta). The result is printed, and it shows that the latest version is v1.0.0.
 
 ```python3
+from checkversions import *
+
 # Example 2: Comparing Versions with Hyphens and Words
 version1 = "2.0.0-beta"
 version2 = "2.0.1-alpha"
@@ -93,6 +103,19 @@ print(result)
 
 ```
 In this example, we introduce a custom hierarchy for version comparison. The custom_hierarchy dictionary is defined with version words and their corresponding priority. The compare_versions function uses this custom hierarchy to compare version1 (v1.0.0-beta) with version2 (v1.0.1-alpha). The result is printed, indicating that the latest version is v1.0.1-alpha.
+
+## Older Version
+
+```python3
+from checkversions import *
+current_version = "v1.0.0"
+latest_version = "v1.0.0-beta"
+# Example with older_version=True
+result_older = compare_versions(current_version, latest_version, older_version=True)
+print(f"Older version: {result_older}")
+# Output: Older version: v1.0.0-beta
+```
+In this example, by setting older_version=True, the function returns and prints the older version (v1.0.0-beta) based on the provided versions (v1.0.0 and v1.0.0-beta). If older_version is omitted or set to False, it would return and print the latest version.
 
 ## Contributing
 Contributions are welcome! Before contributing, please read our [Contributing Guidelines](CONTRIBUTING.md) to ensure a smooth and collaborative development process.

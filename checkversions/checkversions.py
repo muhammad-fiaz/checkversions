@@ -33,9 +33,9 @@ def get_default_hierarchy_from_json():
         print(f"Error loading default hierarchy from JSON: {e}")
         return {"beta": 0, "prerelease": 1, "alpha": 2, "unstable": 3, "stable": 4, "release": 5}
 
-def compare_versions(current_version, latest_version, custom_hierarchy=None):
+def compare_versions(current_version, latest_version, custom_hierarchy=None, older_version=False):
     """
-    Compare two versions and determine the latest version.
+    Compare two versions and determine the latest or older version.
 
     This function compares two versions, taking into account version numbers,
     hyphen-separated parts, and additional words (e.g., beta, release, alpha).
@@ -44,9 +44,10 @@ def compare_versions(current_version, latest_version, custom_hierarchy=None):
         current_version (str): The current version.
         latest_version (str): The version to compare against.
         custom_hierarchy (dict, optional): Custom version hierarchy. Defaults to None.
+        older_version (bool, optional): If True, return the older version. Defaults to False.
 
     Returns:
-        str: The latest version, considering version numbers and hierarchy.
+        str: The latest or older version, considering version numbers and hierarchy.
 
     Raises:
         InvalidVersion: If there is an issue with the version comparison.
@@ -90,19 +91,19 @@ def compare_versions(current_version, latest_version, custom_hierarchy=None):
 
         # Compare version numbers first
         if current_version_obj < latest_version_obj:
-            return latest_version_output
+            return current_version_output if older_version else latest_version_output
         elif current_version_obj > latest_version_obj:
-            return current_version_output
+            return latest_version_output if older_version else current_version_output
 
         # Compare hierarchy only if version numbers are equal
         if version_hierarchy.get(current_version_after_hyphen_word, 5) < version_hierarchy.get(latest_version_after_hyphen_word, 5):
-            return latest_version_output
+            return current_version_output if older_version else latest_version_output
         elif version_hierarchy.get(current_version_after_hyphen_word, 5) > version_hierarchy.get(latest_version_after_hyphen_word, 5):
-            return current_version_output
+            return latest_version_output if older_version else current_version_output
         elif version_hierarchy.get(current_version_words, 5) < version_hierarchy.get(latest_version_words, 5):
-            return latest_version_output
+            return current_version_output if older_version else latest_version_output
         elif version_hierarchy.get(current_version_words, 5) > version_hierarchy.get(latest_version_words, 5):
-            return current_version_output
+            return latest_version_output if older_version else current_version_output
 
         return current_version_output
 
