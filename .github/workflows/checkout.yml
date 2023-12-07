@@ -1,0 +1,46 @@
+name: Check Dist
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  check-dist:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+
+      - name: Install Python dependencies
+        uses: py-actions/py-dependency-install@v4
+        with:
+          path: "requirements.txt"
+          update-pip: "true"
+          update-setuptools: "true"
+          update-wheel: "true"
+
+      - name: Build
+        run: python setup.py sdist bdist_wheel
+
+      - name: Compare Dist Changes
+        run: |
+          if [ "$(git diff --ignore-space-at-eol dist/ | wc -l)" -gt "0" ]; then
+            echo "Detected uncommitted changes after build. See status below:"
+            git diff
+            exit 1
+          fi
+
+      - name: Upload Artifact on Failure
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: dist
+          path: dist/
