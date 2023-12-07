@@ -1,7 +1,9 @@
-name: Publish Python distributions to PyPI and TestPyPI
+name: Publish Python distributions 
 
 on:
-  workflow_dispatch:
+  release:
+    types:
+      - created
 
 jobs:
   python-build-n-publish:
