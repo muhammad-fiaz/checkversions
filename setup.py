@@ -34,6 +34,8 @@ setup(
     ],
     python_requires='>=3.8',
     install_requires=INSTALL_REQUIRES,
+    setup_requires=['pytest-runner'],  # Added setup_requires for pytest-runner
+    tests_require=['pytest'],  # Added tests_require for pytest
     license='MIT License',
     project_urls={
         'Source Code': 'https://github.com/muhammad-fiaz/checkversions.git',
