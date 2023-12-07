@@ -11,7 +11,7 @@ To contribute, follow these steps:
 1. Fork the repository to your GitHub account.
 2. Clone the forked repository to your local machine.
 ```bash
-   git clone https://github.com/muhammad-fiaz/checkversions.git
+   git clone https://github.com/your-username/checkversions.git
    cd checkversions
 ```
 3. Create a new branch for your contribution.
