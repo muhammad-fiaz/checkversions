@@ -1,6 +1,11 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.1'
+from checkversions.version import get_Version
+
+VERSION = "0.0.1"
+
+get_Version(VERSION)
+
 DESCRIPTION = 'CheckVersions is a powerful and intuitive version comparison tool for software development.'
 
 with open("README.md", "r", encoding="utf-8") as fh:
