@@ -21,10 +21,10 @@ jobs:
     - name: Install Python dependencies
       uses: py-actions/py-dependency-install@v4
       with:
-        path: "checkversions/requirements.txt"  # Adjust the path based on your project structure
+        path: "requirements.txt"
         update-pip: "true"
         update-setuptools: "true"
         update-wheel: "true"
 
     - name: Run tests
-      run: pytest checkversions/tests
+      run: pytest tests
