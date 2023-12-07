@@ -44,7 +44,7 @@ CheckVersions is a powerful and intuitive version comparison tool designed to si
 ## Installation
 
 ```bash
-npm install checkversions
+pip install checkversions
 ```
 ## Usage
 ```python3
