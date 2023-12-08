@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 from checkversions.version import get_Version
 
-VERSION = "0.0.4"
+VERSION = "0.0.5"
 
 get_Version(VERSION)
 
