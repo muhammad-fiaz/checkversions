@@ -3,35 +3,6 @@ from packaging import version
 from packaging.version import InvalidVersion
 from dotsetup import DotSetup, FileNotFoundError, VariableNotFoundError, JSONDecodeError
 
-def get_default_hierarchy_from_json():
-    """
-    Load the default hierarchy from a JSON file.
-
-    This function initializes a DotSetup instance, gets the absolute path to
-    the 'default_hierarchy.json' file, and loads the hierarchy from the JSON file.
-
-    Returns:
-        dict: The default version hierarchy loaded from the JSON file.
-
-    Raises:
-        FileNotFoundError: If the 'default_hierarchy.json' file is not found.
-        VariableNotFoundError: If a variable is not found during JSON loading.
-        JSONDecodeError: If there is an error decoding JSON.
-    """
-    try:
-        # Initialize DotSetup
-        ds = DotSetup()
-
-        # Get the absolute path to the directory containing this module
-        json_file_path = os.path.abspath('default_hierarchy.json')
-
-
-        # Load from JSON file
-        value_json = ds.load('default_hierarchy', file_type='json', file_path=json_file_path)
-        return value_json
-    except (FileNotFoundError, VariableNotFoundError, JSONDecodeError) as e:
-        print(f"Error loading default hierarchy from JSON: {e}")
-        return {"beta": 0, "prerelease": 1, "alpha": 2, "unstable": 3, "stable": 4, "release": 5}
 
 def compare_versions(current_version, latest_version, custom_hierarchy=None, older_version=False):
     """
@@ -74,7 +45,7 @@ def compare_versions(current_version, latest_version, custom_hierarchy=None, old
         latest_version_after_hyphen_word = ''.join(filter(str.isalpha, latest_version_after_hyphen_parts[0])) if latest_version_after_hyphen_parts else ''
 
         # Default version hierarchy
-        default_hierarchy = get_default_hierarchy_from_json()
+        default_hierarchy = {"beta": 0, "prerelease": 1, "alpha": 2, "unstable": 3, "stable": 4, "release": 5}
 
         # Use custom hierarchy if provided, otherwise use default
         version_hierarchy = custom_hierarchy or default_hierarchy
