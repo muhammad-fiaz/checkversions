@@ -11,9 +11,6 @@ DESCRIPTION = 'CheckVersions is a powerful and intuitive version comparison tool
 with open("README.md", "r", encoding="utf-8") as fh:
     LONG_DESCRIPTION = fh.read()
 
-with open("requirements.txt", "r", encoding="utf-8") as req_file:
-    INSTALL_REQUIRES = req_file.read().splitlines()
-
 setup(
     name="checkversions",
     version=VERSION,
@@ -38,7 +35,14 @@ setup(
         "Operating System :: Microsoft :: Windows",
     ],
     python_requires='>=3.8',
-    install_requires=INSTALL_REQUIRES,
+    install_requires=[
+    pip==23.3.1,
+setuptools==69.0.2,
+pytest==7.4.3,
+dotsetup~=0.0.2,
+packaging~=23.2
+    
+    ],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
     license='MIT License',
