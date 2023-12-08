@@ -36,12 +36,10 @@ setup(
     ],
     python_requires='>=3.8',
     install_requires=[
-    pip==23.3.1,
-setuptools==69.0.2,
-pytest==7.4.3,
-dotsetup~=0.0.2,
-packaging~=23.2
-    
+  'setuptools==69.0.2',
+        'pytest==7.4.3',
+        'dotsetup==0.0.2',
+        'packaging==23.2',
     ],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
