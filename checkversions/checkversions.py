@@ -22,12 +22,8 @@ def get_default_hierarchy_from_json():
         # Initialize DotSetup
         ds = DotSetup()
 
-        # Get absolute path to JSON file
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        json_file_path = os.path.join(script_dir, '../default_hierarchy.json')
-
         # Load from JSON file
-        value_json = ds.load('default_hierarchy', file_type='json', file_path=json_file_path)
+        value_json = ds.load('default_hierarchy', file_type='json', file_path='../default_hierarchy.json')
         return value_json
     except (FileNotFoundError, VariableNotFoundError, JSONDecodeError) as e:
         print(f"Error loading default hierarchy from JSON: {e}")
