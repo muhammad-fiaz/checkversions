@@ -1,6 +1,6 @@
 pip==23.3.1
 setuptools==69.0.2
-pytest==7.4.3
+pytest==8.0.0
 dotsetup~=0.0.2
 packaging~=23.2
 
