@@ -1,4 +1,4 @@
-pip==23.3.1
+pip==24.0
 setuptools==69.0.2
 pytest==8.0.0
 dotsetup~=0.0.2
