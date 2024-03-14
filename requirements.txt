@@ -2,6 +2,6 @@ pip==24.0
 setuptools==69.2.0
 pytest==8.1.0
 dotsetup~=0.0.2
-packaging~=23.2
+packaging~=24.0
 
 
