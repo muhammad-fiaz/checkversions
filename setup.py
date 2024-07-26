@@ -39,7 +39,7 @@ setup(
   'setuptools==69.2.0',
         'pytest==8.3.2',
         'dotsetup==0.0.2',
-        'packaging==23.2',
+        'packaging==24.1',
     ],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
