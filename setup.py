@@ -36,7 +36,7 @@ setup(
     ],
     python_requires='>=3.8',
     install_requires=[
-  'setuptools==72.1.0',
+  'setuptools==73.0.1',
         'pytest==8.3.2',
         'dotsetup==0.0.2',
         'packaging==24.1',
